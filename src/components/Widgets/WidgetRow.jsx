@@ -12,11 +12,11 @@ export default class WidgetRow extends Component {
         <td>{this.props.widgetData.melts ? 'yes' : 'no'}</td>
         <td>{this.props.widgetData.inventory}</td>
       </tr>
-    )
-  };
+    );
+  }
 }
 
 WidgetRow.propTypes = {
   widgetData: PropTypes.object.isRequired,
-  onRowClick : PropTypes.func.isRequired
+  onRowClick: PropTypes.func.isRequired,
 };

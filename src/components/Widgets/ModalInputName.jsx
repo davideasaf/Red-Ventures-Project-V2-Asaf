@@ -4,18 +4,18 @@ import React, { Component, PropTypes } from 'react';
 export default class ModalInputName extends Component {
   constructor(props) {
     super(props);
-    this.state = {name: this.props.name};
+    this.state = { name: this.props.name };
     this.handleNameChange = this.handleNameChange.bind(this);
-  };
+  }
   handleNameChange(e) {
-    this.setState({name: e.target.value});
-  };
+    this.setState({ name: e.target.value });
+  }
   // componentWillReceiveProps(){
   //   this.setState({name: this.props.name});
   // }
-  componentDidMount(){
-    if (!this.state.name){
-      this.setState({name: this.props.name});
+  componentDidMount() {
+    if (!this.state.name) {
+      this.setState({ name: this.props.name });
     }
   }
 
@@ -25,10 +25,10 @@ export default class ModalInputName extends Component {
     // {/*<!-- Name-->*/}
     <div className="controls">
       Name:
-      <input id="widget-name" name="widget-name" type="text" value={this.state.name} onChange={this.handleNameChange} className="input-medium"/>
+      <input id="widget-name" name="widget-name" type="text" value={this.state.name} onChange={this.handleNameChange} className="input-medium" />
     </div>
-    )
-  };
+    );
+  }
 }
 
 ModalInputName.propTypes = {

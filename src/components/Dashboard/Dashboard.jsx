@@ -9,10 +9,10 @@ export default class Dashboard extends Component {
   render() {
     return (
       <div className="dashboard">
-        <Headerbar page="Dashboard"/>
-        <Sidebar page="Dashboard"/>
-        <WidgetContainer/>
+        <Headerbar page="Dashboard" />
+        <Sidebar page="Dashboard" />
+        <WidgetContainer />
       </div>
-    )
+    );
   }
 }

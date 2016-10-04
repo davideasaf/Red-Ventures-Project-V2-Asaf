@@ -9,41 +9,40 @@ import DisplayTable from '../DisplayTable.jsx';
 export default class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = {usersData: [], currentUserView: {}};
+    this.state = { usersData: [], currentUserView: {} };
   }
   loadUsersFromApi() {
-    let getUsersUrl = '/api/users';
-    let queryOptions = {
+    const getUsersUrl = '/api/users';
+    const queryOptions = {
       type: 'GET',
       url: getUsersUrl,
-      success: function(userData) {
+      success: function (userData) {
         console.debug('userData', userData);
-        this.setState({usersData: userData});
+        this.setState({ usersData: userData });
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }.bind(this),
     };
 
     $.ajax(queryOptions);
+  }
 
-  };
-
-  handleUserClickTable(userData){
-    //userData has all data to display but I will display hitting the API endpoint:
-    //If this were specifically set to hit the API, I would only pass the ID up from the table child component
-    let userId = userData.id;
-    let getUserUrl = '/api/users/' + userId;
-    let queryOptions = {
+  handleUserClickTable(userData) {
+    // userData has all data to display but I will display hitting the API endpoint:
+    // If this were specifically set to hit the API, I would only pass the ID up from the table child component
+    const userId = userData.id;
+    const getUserUrl = `/api/users/${userId}`;
+    const queryOptions = {
       type: 'GET',
       url: getUserUrl,
-      success: function(userData) {
-        this.setState({currentUserView: userData});
+      success: function (userData) {
+        this.setState({ currentUserView: userData });
         $('#myModal').modal('show');
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }.bind(this),
     };
 
     $.ajax(queryOptions);
@@ -63,34 +62,35 @@ export default class Users extends Component {
     //   }
     // }.bind(this));
 
-    //Set Current User State
+    // Set Current User State
     // this.setState({currentUserView: userData});
-    //Open Modal
+    // Open Modal
     // $('#myModal').modal('show');
   }
 
   componentDidMount() {
     this.loadUsersFromApi();
     // setInterval(this.loadCommentsFromServer, 2000);
-  };
+  }
 
 
   render() {
-    //possible to set headers dynamically by getting data object's keys
-    let tableHeaders = ['ID', 'Name', 'Avatar'];
+    // possible to set headers dynamically by getting data object's keys
+    const tableHeaders = ['ID', 'Name', 'Avatar'];
     return (
       <div className="users">
-        <UserModal displayData={this.state.currentUserView}/>
-        <Headerbar page="Users"/>
-        <Sidebar page="Users"/>
+        <UserModal displayData={this.state.currentUserView} />
+        <Headerbar page="Users" />
+        <Sidebar page="Users" />
         <DisplayTable
-          title='Users'
+          title="Users"
           tableHeaders={tableHeaders}
           displayData={this.state.usersData}
           avatar="true"
-          onRowDataClick={this.handleUserClickTable.bind(this)}/>
+          onRowDataClick={this.handleUserClickTable.bind(this)}
+        />
       </div>
-    )
+    );
   }
 }
 
@@ -113,7 +113,7 @@ class UserModal extends Component {
             </div>
             <div className="modal-body">
               <div className="row">
-                <h1 className="text-center"><img className="gravatar-large" src={this.props.displayData.gravatar}/></h1>
+                <h1 className="text-center"><img className="gravatar-large" src={this.props.displayData.gravatar} /></h1>
                 <h3>Name: {this.props.displayData.name}</h3>
                 <h3>Id: {this.props.displayData.id}</h3>
               </div>
@@ -125,11 +125,11 @@ class UserModal extends Component {
 
         </div>
       </div>
-    )
+    );
   }
 }
 
 UserModal.propTypes = {
   // title : React.PropTypes.string.isRequired,
-  displayData: React.PropTypes.object.isRequired
+  displayData: React.PropTypes.object.isRequired,
 };

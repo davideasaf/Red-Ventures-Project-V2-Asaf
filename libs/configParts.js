@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 
-exports.devServer = function(options) {
+exports.devServer = function (options) {
   return {
     devtool: 'inline-source-map',
     devServer: {
@@ -20,15 +20,15 @@ exports.devServer = function(options) {
       // Parse host and port from env to allow customization.
       //
       host: options.host, // Defaults to `localhost`
-      port: options.port // Defaults to 8080
+      port: options.port, // Defaults to 8080
     },
     plugins: [
       // Enable multi-pass compilation for enhanced performance
       // in larger projects. Good default.
       new webpack.HotModuleReplacementPlugin({
-        multiStep: true
+        multiStep: true,
       }),
-      new webpack.NoErrorsPlugin()
-    ]
+      new webpack.NoErrorsPlugin(),
+    ],
   };
-}
+};

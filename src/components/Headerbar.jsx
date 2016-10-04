@@ -7,7 +7,7 @@ export default class Headerbar extends Component {
       <div className="row header col-xs-12">
         <div className="user pull-right">
           <div className="item dropdown">
-            <a href="#" className="dropdown-toggle"><img src="/public/img/avatar.jpg" alt=""/></a>
+            <a href="#" className="dropdown-toggle"><img src="/public/img/avatar.jpg" alt="" /></a>
           </div>
         </div>
         <div className="meta">

@@ -5,82 +5,80 @@ import 'bootstrap';
 import Sidebar from '../Sidebar.jsx';
 import Headerbar from '../Headerbar.jsx';
 import EditWidgetModal from './EditWidgetModal.jsx';
-import DisplayTable from '../DisplayTable.jsx'
+import DisplayTable from '../DisplayTable.jsx';
 
 
 export default class Widgets extends Component {
   constructor(props) {
     super(props);
-    this.state = {widgetsData: [], currentWidgetData: {}};
-  };
-
-  handleWidgetClickTable(widgetData){
-    let widgetId = widgetData.id;
-
-    let getWidgetsUrl = '/api/widgets/' + widgetId;
-    let queryOptions = {
-      type: 'GET',
-      url: getWidgetsUrl,
-      success: function(widgetData) {
-        console.debug('widgetData', widgetData);
-        this.setState({currentWidgetData: widgetData});
-        $('#myModal').modal('show');
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    };
-
-    $.ajax(queryOptions);
-  };
-
-  loadWidgetsFromApi() {
-    let getWidgetsUrl = '/api/widgets';
-    let queryOptions = {
-      type: 'GET',
-      url: getWidgetsUrl,
-      success: function(widgetData) {
-        this.setState({widgetsData: widgetData});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    };
-
-    $.ajax(queryOptions);
-
-  };
-
-  handleModalChange(inputChange) {
-    this.setState({currentWidgetData: inputChange})
+    this.state = { widgetsData: [], currentWidgetData: {} };
   }
 
-  showCreateModal(e){
+  handleWidgetClickTable(widgetData) {
+    const widgetId = widgetData.id;
+
+    const getWidgetsUrl = `/api/widgets/${widgetId}`;
+    const queryOptions = {
+      type: 'GET',
+      url: getWidgetsUrl,
+      success: function (widgetData) {
+        console.debug('widgetData', widgetData);
+        this.setState({ currentWidgetData: widgetData });
+        $('#myModal').modal('show');
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this),
+    };
+
+    $.ajax(queryOptions);
+  }
+
+  loadWidgetsFromApi() {
+    const getWidgetsUrl = '/api/widgets';
+    const queryOptions = {
+      type: 'GET',
+      url: getWidgetsUrl,
+      success: function (widgetData) {
+        this.setState({ widgetsData: widgetData });
+      }.bind(this),
+      error: function (xhr, status, err) {
+        console.error(this.props.url, status, err.toString());
+      }.bind(this),
+    };
+
+    $.ajax(queryOptions);
+  }
+
+  handleModalChange(inputChange) {
+    this.setState({ currentWidgetData: inputChange });
+  }
+
+  showCreateModal(e) {
     e.preventDefault();
-    let clearedOutWidget = {
+    const clearedOutWidget = {
       name: '',
       price: 0,
       color: 'red',
       melts: false,
-      inventory: 0
+      inventory: 0,
 
     };
-    this.setState({currentWidgetData: clearedOutWidget});
+    this.setState({ currentWidgetData: clearedOutWidget });
     $('#myModal').modal('show');
-
   }
 
   componentDidMount() {
     this.loadWidgetsFromApi();
-  };
+  }
 
-  reload(){
+  reload() {
     console.log('reloading');
     this.loadWidgetsFromApi();
   }
 
   render() {
-    let tableHeaders = ['Name', 'Color', 'Price', 'Melts?', 'Inventory'];
+    const tableHeaders = ['Name', 'Color', 'Price', 'Melts?', 'Inventory'];
 
     return (
       <div className="widgets">
@@ -89,8 +87,8 @@ export default class Widgets extends Component {
           onWidgetInput={this.handleModalChange.bind(this)}
           onWidgetEdited={this.reload.bind(this)}
         />
-        <Headerbar page="Widgets"/>
-        <Sidebar page="Widgets"/>
+        <Headerbar page="Widgets" />
+        <Sidebar page="Widgets" />
 
         <div className="col-lg-12 col-xs-12">
           <div className="pull-right">
@@ -98,13 +96,13 @@ export default class Widgets extends Component {
           </div>
         </div>
         <DisplayTable
-          title='Widgets'
+          title="Widgets"
           tableHeaders={tableHeaders}
           displayData={this.state.widgetsData}
           onRowDataClick={this.handleWidgetClickTable.bind(this)}
         />
       </div>
-    )
+    );
   }
 }
 

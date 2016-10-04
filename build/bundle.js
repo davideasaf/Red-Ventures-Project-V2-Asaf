@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "89860c0a3f66d95c539d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "ff05524064c2df5a0574"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -586,8 +586,8 @@
   \******************/
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(/*! /Users/DavidAsaf/Develop/react-hello-world/src/main.jsx */1);
-	module.exports = __webpack_require__(/*! /Users/DavidAsaf/Develop/react-hello-world/src/styles/app.css */285);
+	__webpack_require__(/*! /Users/DavidAsaf/Develop/Red-Ventures-Project-V2-Asaf/src/main.jsx */1);
+	module.exports = __webpack_require__(/*! /Users/DavidAsaf/Develop/Red-Ventures-Project-V2-Asaf/src/styles/app.css */285);
 
 
 /***/ },
@@ -615,19 +615,19 @@
 	
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 	
-	var _App = __webpack_require__(/*! ./components/App.jsx */ 260);
+	var _App = __webpack_require__(/*! ./components/App */ 260);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _Dashboard = __webpack_require__(/*! ./components/Dashboard/Dashboard.jsx */ 261);
+	var _Dashboard = __webpack_require__(/*! ./components/Dashboard/Dashboard */ 261);
 	
 	var _Dashboard2 = _interopRequireDefault(_Dashboard);
 	
-	var _Users = __webpack_require__(/*! ./components/Users/Users.jsx */ 268);
+	var _Users = __webpack_require__(/*! ./components/Users/Users */ 268);
 	
 	var _Users2 = _interopRequireDefault(_Users);
 	
-	var _Widgets = __webpack_require__(/*! ./components/Widgets/Widgets.jsx */ 269);
+	var _Widgets = __webpack_require__(/*! ./components/Widgets/Widgets */ 269);
 	
 	var _Widgets2 = _interopRequireDefault(_Widgets);
 	
@@ -6057,9 +6057,9 @@
 
 /***/ },
 /* 45 */
-/*!********************************************!*\
-  !*** ./~/history/lib/createHashHistory.js ***!
-  \********************************************/
+/*!***********************************************************!*\
+  !*** ./~/react-router/~/history/lib/createHashHistory.js ***!
+  \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -6312,9 +6312,9 @@
 
 /***/ },
 /* 46 */
-/*!****************************************!*\
-  !*** ./~/history/~/warning/browser.js ***!
-  \****************************************/
+/*!*******************************************************!*\
+  !*** ./~/react-router/~/history/~/warning/browser.js ***!
+  \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -6382,9 +6382,9 @@
 
 /***/ },
 /* 47 */
-/*!**********************************!*\
-  !*** ./~/history/lib/Actions.js ***!
-  \**********************************/
+/*!*************************************************!*\
+  !*** ./~/react-router/~/history/lib/Actions.js ***!
+  \*************************************************/
 /***/ function(module, exports) {
 
 	/**
@@ -6421,9 +6421,9 @@
 
 /***/ },
 /* 48 */
-/*!************************************!*\
-  !*** ./~/history/lib/PathUtils.js ***!
-  \************************************/
+/*!***************************************************!*\
+  !*** ./~/react-router/~/history/lib/PathUtils.js ***!
+  \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -6477,9 +6477,9 @@
 
 /***/ },
 /* 49 */
-/*!***********************************************!*\
-  !*** ./~/history/lib/ExecutionEnvironment.js ***!
-  \***********************************************/
+/*!**************************************************************!*\
+  !*** ./~/react-router/~/history/lib/ExecutionEnvironment.js ***!
+  \**************************************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6490,9 +6490,9 @@
 
 /***/ },
 /* 50 */
-/*!***********************************!*\
-  !*** ./~/history/lib/DOMUtils.js ***!
-  \***********************************/
+/*!**************************************************!*\
+  !*** ./~/react-router/~/history/lib/DOMUtils.js ***!
+  \**************************************************/
 /***/ function(module, exports) {
 
 	'use strict';
@@ -6573,9 +6573,9 @@
 
 /***/ },
 /* 51 */
-/*!******************************************!*\
-  !*** ./~/history/lib/DOMStateStorage.js ***!
-  \******************************************/
+/*!*********************************************************!*\
+  !*** ./~/react-router/~/history/lib/DOMStateStorage.js ***!
+  \*********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/*eslint-disable no-empty */
@@ -6655,9 +6655,9 @@
 
 /***/ },
 /* 52 */
-/*!*******************************************!*\
-  !*** ./~/history/lib/createDOMHistory.js ***!
-  \*******************************************/
+/*!**********************************************************!*\
+  !*** ./~/react-router/~/history/lib/createDOMHistory.js ***!
+  \**********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -6704,9 +6704,9 @@
 
 /***/ },
 /* 53 */
-/*!****************************************!*\
-  !*** ./~/history/lib/createHistory.js ***!
-  \****************************************/
+/*!*******************************************************!*\
+  !*** ./~/react-router/~/history/lib/createHistory.js ***!
+  \*******************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -7151,9 +7151,9 @@
 
 /***/ },
 /* 57 */
-/*!*************************************!*\
-  !*** ./~/history/lib/AsyncUtils.js ***!
-  \*************************************/
+/*!****************************************************!*\
+  !*** ./~/react-router/~/history/lib/AsyncUtils.js ***!
+  \****************************************************/
 /***/ function(module, exports) {
 
 	"use strict";
@@ -7217,9 +7217,9 @@
 
 /***/ },
 /* 58 */
-/*!*****************************************!*\
-  !*** ./~/history/lib/createLocation.js ***!
-  \*****************************************/
+/*!********************************************************!*\
+  !*** ./~/react-router/~/history/lib/createLocation.js ***!
+  \********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -7277,9 +7277,9 @@
 
 /***/ },
 /* 59 */
-/*!********************************************!*\
-  !*** ./~/history/lib/runTransitionHook.js ***!
-  \********************************************/
+/*!***********************************************************!*\
+  !*** ./~/react-router/~/history/lib/runTransitionHook.js ***!
+  \***********************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -7310,9 +7310,9 @@
 
 /***/ },
 /* 60 */
-/*!************************************!*\
-  !*** ./~/history/lib/deprecate.js ***!
-  \************************************/
+/*!***************************************************!*\
+  !*** ./~/react-router/~/history/lib/deprecate.js ***!
+  \***************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -7338,9 +7338,9 @@
 
 /***/ },
 /* 61 */
-/*!*************************************!*\
-  !*** ./~/history/lib/useQueries.js ***!
-  \*************************************/
+/*!****************************************************!*\
+  !*** ./~/react-router/~/history/lib/useQueries.js ***!
+  \****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -10079,9 +10079,9 @@
 
 /***/ },
 /* 90 */
-/*!**************************************!*\
-  !*** ./~/history/lib/useBasename.js ***!
-  \**************************************/
+/*!*****************************************************!*\
+  !*** ./~/react-router/~/history/lib/useBasename.js ***!
+  \*****************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -10246,9 +10246,9 @@
 
 /***/ },
 /* 91 */
-/*!**********************************************!*\
-  !*** ./~/history/lib/createMemoryHistory.js ***!
-  \**********************************************/
+/*!*************************************************************!*\
+  !*** ./~/react-router/~/history/lib/createMemoryHistory.js ***!
+  \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -10530,9 +10530,9 @@
 
 /***/ },
 /* 95 */
-/*!***********************************************!*\
-  !*** ./~/history/lib/createBrowserHistory.js ***!
-  \***********************************************/
+/*!**************************************************************!*\
+  !*** ./~/react-router/~/history/lib/createBrowserHistory.js ***!
+  \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -30291,7 +30291,6 @@
 	    var _this = _possibleConstructorReturn(this, (WidgetContainer.__proto__ || Object.getPrototypeOf(WidgetContainer)).call(this, props));
 	
 	    _this.state = { usersData: [], widgetsData: [] };
-	
 	    return _this;
 	  }
 	
@@ -40725,7 +40724,7 @@
 	  _createClass(DisplayTable, [{
 	    key: 'handleUserInput',
 	    value: function handleUserInput(filterText) {
-	      //LowerCase filterText for case insensitive match.
+	      // LowerCase filterText for case insensitive match.
 	      this.setState({ filterText: filterText.toLowerCase() });
 	    }
 	  }, {
@@ -40741,7 +40740,7 @@
 	      var rowsToShow = void 0;
 	      if (this.props.title.toLowerCase() === 'widgets') {
 	        rowsToShow = this.props.displayData.map(function (rowNode) {
-	          //Apply filter
+	          // Apply filter
 	          if (rowNode.name.toLowerCase().indexOf(_this2.state.filterText) > -1) return _react2.default.createElement(WidgetRow, {
 	            key: rowNode.id,
 	            rowData: rowNode,
@@ -40751,7 +40750,7 @@
 	        });
 	      } else {
 	        rowsToShow = this.props.displayData.map(function (rowNode) {
-	          //Apply filter
+	          // Apply filter
 	          if (rowNode.name.toLowerCase().indexOf(_this2.state.filterText) > -1) return _react2.default.createElement(RegularRow, {
 	            key: rowNode.id,
 	            rowData: rowNode,
@@ -41125,8 +41124,8 @@
 	  }, {
 	    key: 'handleUserClickTable',
 	    value: function handleUserClickTable(userData) {
-	      //userData has all data to display but I will display hitting the API endpoint:
-	      //If this were specifically set to hit the API, I would only pass the ID up from the table child component
+	      // userData has all data to display but I will display hitting the API endpoint:
+	      // If this were specifically set to hit the API, I would only pass the ID up from the table child component
 	      var userId = userData.id;
 	      var getUserUrl = '/api/users/' + userId;
 	      var queryOptions = {
@@ -41158,9 +41157,9 @@
 	      //   }
 	      // }.bind(this));
 	
-	      //Set Current User State
+	      // Set Current User State
 	      // this.setState({currentUserView: userData});
-	      //Open Modal
+	      // Open Modal
 	      // $('#myModal').modal('show');
 	    }
 	  }, {
@@ -41172,7 +41171,7 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      //possible to set headers dynamically by getting data object's keys
+	      // possible to set headers dynamically by getting data object's keys
 	      var tableHeaders = ['ID', 'Name', 'Avatar'];
 	      return _react2.default.createElement(
 	        'div',
@@ -41185,7 +41184,8 @@
 	          tableHeaders: tableHeaders,
 	          displayData: this.state.usersData,
 	          avatar: 'true',
-	          onRowDataClick: this.handleUserClickTable.bind(this) })
+	          onRowDataClick: this.handleUserClickTable.bind(this)
+	        })
 	      );
 	    }
 	  }]);
@@ -43983,7 +43983,7 @@
 	    _classCallCheck(this, EditWidgetModal);
 	
 	    return _possibleConstructorReturn(this, (EditWidgetModal.__proto__ || Object.getPrototypeOf(EditWidgetModal)).call(this, props));
-	    //Bind event handlers in the constructor so they are only bound once for every instance
+	    // Bind event handlers in the constructor so they are only bound once for every instance
 	    // this.handleNameChange = this.handleNameChange.bind(this);
 	  }
 	
@@ -44025,7 +44025,7 @@
 	          url: postWidgetsUrl,
 	          data: widgetToSubmit,
 	          success: function () {
-	            //call parent's data request function to render all widgets including the new one created
+	            // call parent's data request function to render all widgets including the new one created
 	            this.props.onWidgetEdited();
 	          }.bind(this),
 	          error: function (xhr, status, err) {
@@ -44035,14 +44035,14 @@
 	
 	        $.ajax(queryOptions);
 	      } else if (widgetToSubmit) {
-	        //POST doc
+	        // POST doc
 	        var _postWidgetsUrl = '/api/widgets/';
 	        var _queryOptions = {
 	          type: 'POST',
 	          url: _postWidgetsUrl,
 	          data: widgetToSubmit,
 	          success: function () {
-	            //call parent's data request function to render all widgets including the new one created
+	            // call parent's data request function to render all widgets including the new one created
 	            this.props.onWidgetEdited();
 	          }.bind(this),
 	          error: function (xhr, status, err) {
@@ -44053,12 +44053,12 @@
 	        $.ajax(_queryOptions);
 	      }
 	    }
-	  }, {
-	    key: 'dismissModal',
-	
 	
 	    // Using property 'data-dismiss' on button destroys onSubmit callback.
 	    // Using jquery to close modal
+	
+	  }, {
+	    key: 'dismissModal',
 	    value: function dismissModal() {
 	      $('#myModal').modal('hide');
 	    }
@@ -44105,7 +44105,8 @@
 	                    value: this.props.displayData.name,
 	                    onChange: this.handleChange.bind(this, 'widgetName'),
 	                    ref: 'widgetName',
-	                    className: 'input-medium' })
+	                    className: 'input-medium'
+	                  })
 	                ),
 	                _react2.default.createElement(
 	                  'div',
@@ -44219,7 +44220,8 @@
 	                  form: 'widgetEditForm',
 	                  type: 'submit',
 	                  className: 'btn btn-default',
-	                  onClick: this.dismissModal.bind(this) },
+	                  onClick: this.dismissModal.bind(this)
+	                },
 	                'Submit Edit'
 	              )
 	            )
@@ -44286,12 +44288,12 @@
 	    value: function handleNameChange(e) {
 	      this.setState({ name: e.target.value });
 	    }
-	  }, {
-	    key: "componentDidMount",
-	
 	    // componentWillReceiveProps(){
 	    //   this.setState({name: this.props.name});
 	    // }
+	
+	  }, {
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      if (!this.state.name) {
 	        this.setState({ name: this.props.name });

@@ -7,22 +7,20 @@ import WidgetRow from './WidgetRow';
 export default class WidgetsTable extends Component {
   constructor(props) {
     super(props);
-    this.state = {updateValues: {}};
+    this.state = { updateValues: {} };
   }
-  clearForm(){
+  clearForm() {
     ReactDOM.findDOMNode(this.refs.widgetName).value = '';
     ReactDOM.findDOMNode(this.refs.widgetPrice).value = 0;
     ReactDOM.findDOMNode(this.refs.widgetColor).value = 'red';
     ReactDOM.findDOMNode(this.refs.widgetMelts).checked = true;
     ReactDOM.findDOMNode(this.refs.widgetInventory).value = 0;
-
   }
-  handleRowClick(widgetData){
+  handleRowClick(widgetData) {
     $('#myModal').modal('show');
 
-    this.setState({updateValues: widgetData});
-
-  };
+    this.setState({ updateValues: widgetData });
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -31,38 +29,37 @@ export default class WidgetsTable extends Component {
       price: this.refs.widgetPrice.value.trim(),
       color: this.refs.widgetColor.value.trim(),
       melts: this.refs.widgetMelts.checked,
-      inventory: this.refs.widgetInventory.value.trim()
+      inventory: this.refs.widgetInventory.value.trim(),
     };
 
-    //POST doc
-    let postWidgetsUrl = '/api/widgets/';
-    let queryOptions = {
+    // POST doc
+    const postWidgetsUrl = '/api/widgets/';
+    const queryOptions = {
       type: 'POST',
       url: postWidgetsUrl,
       data: doc,
-      success: function() {
-        //call parent's data request function to render all widgets including the new one created
+      success: function () {
+        // call parent's data request function to render all widgets including the new one created
         this.props.onCreateWidgetSubmit();
       }.bind(this),
-      error: function(xhr, status, err) {
+      error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }.bind(this)
+      }.bind(this),
     };
 
     $.ajax(queryOptions);
 
-    //Clear form
-    this.clearForm()
+    // Clear form
+    this.clearForm();
   }
 
   render() {
-
     return (
     <div className="row">
-      {/*<!-- Create/Edit -->*/}
+      {/* <!-- Create/Edit -->*/}
       <div className="row">
 
-        {/*<!-- Widget listing -->*/}
+        {/* <!-- Widget listing -->*/}
         <div className="col-lg-12 col-xs-12">
           <div className="widget">
             <div className="widget-header">Create/Edit Template
@@ -75,7 +72,7 @@ export default class WidgetsTable extends Component {
 
                 <legend>Create Widget</legend>
 
-                {/*<!-- Name-->*/}
+                {/* <!-- Name-->*/}
                 <div className="controls">
                   Name
                   <input
@@ -88,7 +85,7 @@ export default class WidgetsTable extends Component {
                   />
                 </div>
 
-                {/*<!-- Price -->*/}
+                {/* <!-- Price -->*/}
                 <div className="controls">
                   <div className="input-prepend">
                     Price
@@ -104,7 +101,7 @@ export default class WidgetsTable extends Component {
                   </div>
                 </div>
 
-                {/*<!-- Color -->*/}
+                {/* <!-- Color -->*/}
                 <div className="controls">
                   Color
                   <select
@@ -112,7 +109,7 @@ export default class WidgetsTable extends Component {
                     name="widget-color"
                     className="input-large"
                     ref="widgetColor"
-                    >
+                  >
                     <option>red</option>
                     <option>purple</option>
                     <option>black</option>
@@ -123,7 +120,7 @@ export default class WidgetsTable extends Component {
                   </select>
                 </div>
 
-                {/*<!-- Melts -->*/}
+                {/* <!-- Melts -->*/}
                 <div className="controls">
                   Melts
                   <input
@@ -136,7 +133,7 @@ export default class WidgetsTable extends Component {
                   />
                 </div>
 
-                {/*<!-- Inventory -->*/}
+                {/* <!-- Inventory -->*/}
                 <div className="controls">
                   Inventory
                   <input
@@ -154,7 +151,7 @@ export default class WidgetsTable extends Component {
         </div>
       </div>
 
-      {/*<!-- Widget listing -->*/}
+      {/* <!-- Widget listing -->*/}
       <div className="col-lg-12">
         <div className="widget">
           <div className="widget-header">Widgets</div>
@@ -172,10 +169,11 @@ export default class WidgetsTable extends Component {
               </thead>
               <tbody>
               {this.props.widgetsData.map((widgetNode) => {
-                return <WidgetRow
+                return (<WidgetRow
                   key={widgetNode.id}
                   widgetData={widgetNode}
-                  onRowClick={this.handleRowClick.bind(this)}/>;
+                  onRowClick={this.handleRowClick.bind(this)}
+                />);
               })}
               </tbody>
             </table>
@@ -183,13 +181,12 @@ export default class WidgetsTable extends Component {
         </div>
       </div>
     </div>
-    )
-  };
+    );
+  }
 }
 
 WidgetsTable.propTypes = {
   widgetsData: PropTypes.array.isRequired,
-  onCreateWidgetSubmit : PropTypes.func.isRequired
+  onCreateWidgetSubmit: PropTypes.func.isRequired,
 };
-
 

@@ -6,79 +6,77 @@ import ModalInputName from './ModalInputName.jsx';
 export default class EditWidgetModal extends Component {
   constructor(props) {
     super(props);
-    //Bind event handlers in the constructor so they are only bound once for every instance
+    // Bind event handlers in the constructor so they are only bound once for every instance
     // this.handleNameChange = this.handleNameChange.bind(this);
-  };
+  }
 
   handleChange(source) {
-    if (source === 'widgetName'){
-      let widgetDataToSend = this.props.displayData;
+    if (source === 'widgetName') {
+      const widgetDataToSend = this.props.displayData;
       widgetDataToSend.name = this.refs.widgetName.value;
-      this.props.onWidgetInput(widgetDataToSend)
-    }  else if (source === 'widgetPrice'){
-      let widgetDataToSend = this.props.displayData;
+      this.props.onWidgetInput(widgetDataToSend);
+    } else if (source === 'widgetPrice') {
+      const widgetDataToSend = this.props.displayData;
       widgetDataToSend.price = this.refs.widgetPrice.value;
-      this.props.onWidgetInput(widgetDataToSend)
-    } else if (source === 'widgetColor'){
-      let widgetDataToSend = this.props.displayData;
+      this.props.onWidgetInput(widgetDataToSend);
+    } else if (source === 'widgetColor') {
+      const widgetDataToSend = this.props.displayData;
       widgetDataToSend.color = this.refs.widgetColor.value;
-      this.props.onWidgetInput(widgetDataToSend)
-    } else if (source === 'widgetMelts'){
-      let widgetDataToSend = this.props.displayData;
+      this.props.onWidgetInput(widgetDataToSend);
+    } else if (source === 'widgetMelts') {
+      const widgetDataToSend = this.props.displayData;
       widgetDataToSend.melts = this.refs.widgetMelts.value;
-      this.props.onWidgetInput(widgetDataToSend)
-    } else if (source === 'widgetInventory'){
-      let widgetDataToSend = this.props.displayData;
+      this.props.onWidgetInput(widgetDataToSend);
+    } else if (source === 'widgetInventory') {
+      const widgetDataToSend = this.props.displayData;
       widgetDataToSend.inventory = this.refs.widgetInventory.value;
-      this.props.onWidgetInput(widgetDataToSend)
+      this.props.onWidgetInput(widgetDataToSend);
     }
-  };
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    let widgetToSubmit = this.props.displayData;
+    const widgetToSubmit = this.props.displayData;
 
-    if (widgetToSubmit && widgetToSubmit.id){
-      let postWidgetsUrl = '/api/widgets/' + widgetToSubmit.id;
-      let queryOptions = {
+    if (widgetToSubmit && widgetToSubmit.id) {
+      const postWidgetsUrl = `/api/widgets/${widgetToSubmit.id}`;
+      const queryOptions = {
         type: 'PUT',
         url: postWidgetsUrl,
         data: widgetToSubmit,
-        success: function() {
-          //call parent's data request function to render all widgets including the new one created
+        success: function () {
+          // call parent's data request function to render all widgets including the new one created
           this.props.onWidgetEdited();
         }.bind(this),
-        error: function(xhr, status, err) {
+        error: function (xhr, status, err) {
           console.error(this.props.url, status, err.toString());
-        }.bind(this)
+        }.bind(this),
       };
 
       $.ajax(queryOptions);
-
-    } else if (widgetToSubmit){
-      //POST doc
-      let postWidgetsUrl = '/api/widgets/';
-      let queryOptions = {
+    } else if (widgetToSubmit) {
+      // POST doc
+      const postWidgetsUrl = '/api/widgets/';
+      const queryOptions = {
         type: 'POST',
         url: postWidgetsUrl,
         data: widgetToSubmit,
-        success: function() {
-          //call parent's data request function to render all widgets including the new one created
+        success: function () {
+          // call parent's data request function to render all widgets including the new one created
           this.props.onWidgetEdited();
         }.bind(this),
-        error: function(xhr, status, err) {
+        error: function (xhr, status, err) {
           console.error(this.props.url, status, err.toString());
-        }.bind(this)
+        }.bind(this),
       };
 
       $.ajax(queryOptions);
     }
-
-  };
+  }
 
   // Using property 'data-dismiss' on button destroys onSubmit callback.
   // Using jquery to close modal
-  dismissModal(){
+  dismissModal() {
     $('#myModal').modal('hide');
   }
 
@@ -88,7 +86,7 @@ export default class EditWidgetModal extends Component {
     <div id="myModal" className="modal fade" role="dialog">
       <div className="modal-dialog">
 
-        {/*<!-- Modal content-->*/}
+        {/* <!-- Modal content-->*/}
         <div className="modal-content">
           <div className="modal-header">
             <button type="button" className="close" data-dismiss="modal">&times;</button>
@@ -97,7 +95,7 @@ export default class EditWidgetModal extends Component {
           <div className="modal-body">
             <form id="widgetEditForm" className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
 
-              {/*/!*<!-- Name-->*!/*/}
+              {/* /!*<!-- Name-->*!/*/}
               <div className="controls">
                 Name:
                 <input
@@ -107,10 +105,11 @@ export default class EditWidgetModal extends Component {
                   value={this.props.displayData.name}
                   onChange={this.handleChange.bind(this, 'widgetName')}
                   ref="widgetName"
-                  className="input-medium"/>
+                  className="input-medium"
+                />
               </div>
 
-              {/*<!-- Price -->*/}
+              {/* <!-- Price -->*/}
               <div className="controls">
                 <div className="input-prepend">
                   Price:
@@ -127,7 +126,7 @@ export default class EditWidgetModal extends Component {
                 </div>
               </div>
 
-              {/*<!-- Color -->*/}
+              {/* <!-- Color -->*/}
               <div className="controls">
                 Color:
                 <select
@@ -148,7 +147,7 @@ export default class EditWidgetModal extends Component {
                 </select>
               </div>
 
-              {/*<!-- Melts -->*/}
+              {/* <!-- Melts -->*/}
               <div className="controls">
                 Melts:
                 <input
@@ -161,7 +160,7 @@ export default class EditWidgetModal extends Component {
                 />
               </div>
 
-              {/*<!-- Inventory -->*/}
+              {/* <!-- Inventory -->*/}
               <div className="controls">
                 Inventory:
                 <input
@@ -174,7 +173,7 @@ export default class EditWidgetModal extends Component {
                   onChange={this.handleChange.bind(this, 'widgetInventory')}
                 />
               </div>
-              {/*<button type="submit" className="btn btn-default" onClick={this.dismissModal.bind(this)}>Submit Edit</button>*/}
+              {/* <button type="submit" className="btn btn-default" onClick={this.dismissModal.bind(this)}>Submit Edit</button>*/}
             </form>
           </div>
           <div className="modal-footer">
@@ -182,20 +181,19 @@ export default class EditWidgetModal extends Component {
               form="widgetEditForm"
               type="submit"
               className="btn btn-default"
-              onClick={this.dismissModal.bind(this)}>Submit Edit</button>
+              onClick={this.dismissModal.bind(this)}
+            >Submit Edit</button>
           </div>
         </div>
 
       </div>
     </div>
-    )
-  };
+    );
+  }
 }
 
 EditWidgetModal.propTypes = {
   displayData: PropTypes.object.isRequired,
-  onWidgetInput : PropTypes.func.isRequired
+  onWidgetInput: PropTypes.func.isRequired,
 };
-
-
 
