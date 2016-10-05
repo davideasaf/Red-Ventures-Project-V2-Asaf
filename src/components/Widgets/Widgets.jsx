@@ -1,11 +1,13 @@
 import React, { Component, PropTypes } from 'react';
+import axios from 'axios';
+
 import 'bootstrap';
 
 
-import Sidebar from '../Sidebar.jsx';
-import Headerbar from '../Headerbar.jsx';
-import EditWidgetModal from './EditWidgetModal.jsx';
-import DisplayTable from '../DisplayTable.jsx';
+import Sidebar from '../Sidebar';
+import Headerbar from '../Headerbar';
+import EditWidgetModal from './EditWidgetModal';
+import DisplayTable from '../DisplayTable';
 
 
 export default class Widgets extends Component {
@@ -17,12 +19,23 @@ export default class Widgets extends Component {
   handleWidgetClickTable(widgetData) {
     const widgetId = widgetData.id;
 
-    const getWidgetsUrl = `/api/widgets/${widgetId}`;
+    const getWidgetsUrl = `http://spa.tglrw.com:4000/widgets/${widgetId}`;
+
+    axios.get(getWidgetsUrl)
+      .then((res) => {
+        const widgetData = res.data;
+        this.setState({ currentWidgetData: widgetData });
+        $('#myModal').modal('show');
+      })
+      .catch((e) => {
+        console.error(`GET ${getWidgetsUrl} returned: ${e.toString()} ==> ${e}`);
+      });
+
+/*
     const queryOptions = {
       type: 'GET',
       url: getWidgetsUrl,
       success: function (widgetData) {
-        console.debug('widgetData', widgetData);
         this.setState({ currentWidgetData: widgetData });
         $('#myModal').modal('show');
       }.bind(this),
@@ -31,10 +44,21 @@ export default class Widgets extends Component {
       }.bind(this),
     };
 
-    $.ajax(queryOptions);
+    $.ajax(queryOptions);*/
   }
 
   loadWidgetsFromApi() {
+    const getWidgetsUrl = 'http://spa.tglrw.com:4000/widgets/';
+    axios.get(getWidgetsUrl)
+      .then((res) => {
+        const widgetData = res.data;
+        this.setState({ widgetsData: widgetData });
+      })
+      .catch((e) => {
+        console.error(`GET ${getWidgetsUrl} returned: ${e.toString()} ==> ${e}`);
+      });
+
+/*
     const getWidgetsUrl = '/api/widgets';
     const queryOptions = {
       type: 'GET',
@@ -47,7 +71,7 @@ export default class Widgets extends Component {
       }.bind(this),
     };
 
-    $.ajax(queryOptions);
+    $.ajax(queryOptions);*/
   }
 
   handleModalChange(inputChange) {

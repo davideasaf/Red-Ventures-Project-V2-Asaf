@@ -32,22 +32,31 @@ export default class WidgetsTable extends Component {
       inventory: this.refs.widgetInventory.value.trim(),
     };
 
-    // POST doc
-    const postWidgetsUrl = '/api/widgets/';
-    const queryOptions = {
-      type: 'POST',
-      url: postWidgetsUrl,
-      data: doc,
-      success: function () {
-        // call parent's data request function to render all widgets including the new one created
+    const postWidgetsUrl = 'http://spa.tglrw.com:4000/widgets';
+    axios.post(postWidgetsUrl, doc)
+      .then(() => {
         this.props.onCreateWidgetSubmit();
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this),
-    };
+      })
+      .catch((e) => {
+        console.error(`POST ${postWidgetsUrl} returned: ${e.toString()} ==> ${e}`);
+      });
 
-    $.ajax(queryOptions);
+    // // POST doc
+    // const postWidgetsUrl = 'http://spa.tglrw.com:4000/widgets';
+    // const queryOptions = {
+    //   type: 'POST',
+    //   url: postWidgetsUrl,
+    //   data: doc,
+    //   success: function () {
+    //     // call parent's data request function to render all widgets including the new one created
+    //     this.props.onCreateWidgetSubmit();
+    //   }.bind(this),
+    //   error: function (xhr, status, err) {
+    //     console.error(this.props.url, status, err.toString());
+    //   }.bind(this),
+    // };
+    //
+    // $.ajax(queryOptions);
 
     // Clear form
     this.clearForm();
@@ -55,132 +64,132 @@ export default class WidgetsTable extends Component {
 
   render() {
     return (
-    <div className="row">
-      {/* <!-- Create/Edit -->*/}
       <div className="row">
+        {/* <!-- Create/Edit -->*/}
+        <div className="row">
 
-        {/* <!-- Widget listing -->*/}
-        <div className="col-lg-12 col-xs-12">
-          <div className="widget">
-            <div className="widget-header">Create/Edit Template
-              <div className="pull-right">
-                <button className="btn btn-sm btn-info" type="submit" form="createWidgetForm" value="Submit">+ Create</button>
-              </div>
-            </div>
-            <div className="widget-body">
-              <form id="createWidgetForm" className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
-
-                <legend>Create Widget</legend>
-
-                {/* <!-- Name-->*/}
-                <div className="controls">
-                  Name
-                  <input
-                    id="widget-name"
-                    name="widget-name"
-                    type="text"
-                    placeholder="foo-bar"
-                    className="input-medium"
-                    ref="widgetName"
-                  />
+          {/* <!-- Widget listing -->*/}
+          <div className="col-lg-12 col-xs-12">
+            <div className="widget">
+              <div className="widget-header">Create/Edit Template
+                <div className="pull-right">
+                  <button className="btn btn-sm btn-info" type="submit" form="createWidgetForm" value="Submit">+ Create</button>
                 </div>
+              </div>
+              <div className="widget-body">
+                <form id="createWidgetForm" className="form-horizontal" onSubmit={this.handleSubmit.bind(this)}>
 
-                {/* <!-- Price -->*/}
-                <div className="controls">
-                  <div className="input-prepend">
-                    Price
-                    <span className="add-on">$</span>
+                  <legend>Create Widget</legend>
+
+                  {/* <!-- Name-->*/}
+                  <div className="controls">
+                    Name
                     <input
-                      id="widget-price"
-                      name="widget-price"
-                      className="input-medium"
-                      placeholder="0.00"
+                      id="widget-name"
+                      name="widget-name"
                       type="text"
-                      ref="widgetPrice"
+                      placeholder="foo-bar"
+                      className="input-medium"
+                      ref="widgetName"
                     />
                   </div>
-                </div>
 
-                {/* <!-- Color -->*/}
-                <div className="controls">
-                  Color
-                  <select
-                    id="widget-color"
-                    name="widget-color"
-                    className="input-large"
-                    ref="widgetColor"
-                  >
-                    <option>red</option>
-                    <option>purple</option>
-                    <option>black</option>
-                    <option>green</option>
-                    <option>magenta</option>
-                    <option>white</option>
-                    <option>depends on the viewing angle</option>
-                  </select>
-                </div>
+                  {/* <!-- Price -->*/}
+                  <div className="controls">
+                    <div className="input-prepend">
+                      Price
+                      <span className="add-on">$</span>
+                      <input
+                        id="widget-price"
+                        name="widget-price"
+                        className="input-medium"
+                        placeholder="0.00"
+                        type="text"
+                        ref="widgetPrice"
+                      />
+                    </div>
+                  </div>
 
-                {/* <!-- Melts -->*/}
-                <div className="controls">
-                  Melts
-                  <input
-                    type="checkbox"
-                    name="widget-properties"
-                    id="widget-properties-0"
-                    ref="widgetMelts"
-                    disabled="disabled"
-                    checked="true"
-                  />
-                </div>
+                  {/* <!-- Color -->*/}
+                  <div className="controls">
+                    Color
+                    <select
+                      id="widget-color"
+                      name="widget-color"
+                      className="input-large"
+                      ref="widgetColor"
+                    >
+                      <option>red</option>
+                      <option>purple</option>
+                      <option>black</option>
+                      <option>green</option>
+                      <option>magenta</option>
+                      <option>white</option>
+                      <option>depends on the viewing angle</option>
+                    </select>
+                  </div>
 
-                {/* <!-- Inventory -->*/}
-                <div className="controls">
-                  Inventory
-                  <input
-                    id="widget-count"
-                    name="widget-count"
-                    type="text"
-                    placeholder="#?"
-                    className="input-small"
-                    ref="widgetInventory"
-                  />
-                </div>
-              </form>
+                  {/* <!-- Melts -->*/}
+                  <div className="controls">
+                    Melts
+                    <input
+                      type="checkbox"
+                      name="widget-properties"
+                      id="widget-properties-0"
+                      ref="widgetMelts"
+                      disabled="disabled"
+                      checked="true"
+                    />
+                  </div>
+
+                  {/* <!-- Inventory -->*/}
+                  <div className="controls">
+                    Inventory
+                    <input
+                      id="widget-count"
+                      name="widget-count"
+                      type="text"
+                      placeholder="#?"
+                      className="input-small"
+                      ref="widgetInventory"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* <!-- Widget listing -->*/}
+        <div className="col-lg-12">
+          <div className="widget">
+            <div className="widget-header">Widgets</div>
+            <div className="table-responsive">
+              <table className="table table-hover">
+                <thead>
+                <tr>
+                  <th className="text-center">ID</th>
+                  <th>Name</th>
+                  <th>Color</th>
+                  <th>Price</th>
+                  <th>Melts?</th>
+                  <th>Inventory</th>
+                </tr>
+                </thead>
+                <tbody>
+                {this.props.widgetsData.map((widgetNode) => {
+                  return (<WidgetRow
+                    key={widgetNode.id}
+                    widgetData={widgetNode}
+                    onRowClick={this.handleRowClick.bind(this)}
+                  />);
+                })}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
-
-      {/* <!-- Widget listing -->*/}
-      <div className="col-lg-12">
-        <div className="widget">
-          <div className="widget-header">Widgets</div>
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-              <tr>
-                <th className="text-center">ID</th>
-                <th>Name</th>
-                <th>Color</th>
-                <th>Price</th>
-                <th>Melts?</th>
-                <th>Inventory</th>
-              </tr>
-              </thead>
-              <tbody>
-              {this.props.widgetsData.map((widgetNode) => {
-                return (<WidgetRow
-                  key={widgetNode.id}
-                  widgetData={widgetNode}
-                  onRowClick={this.handleRowClick.bind(this)}
-                />);
-              })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
     );
   }
 }

@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-
-import ModalInputName from './ModalInputName.jsx';
+import axios from 'axios';
 
 
 export default class EditWidgetModal extends Component {
@@ -39,6 +38,17 @@ export default class EditWidgetModal extends Component {
     const widgetToSubmit = this.props.displayData;
 
     if (widgetToSubmit && widgetToSubmit.id) {
+      const putWidgetUrl = `http://spa.tglrw.com:4000/widgets/${widgetToSubmit.id}`;
+      axios.put(putWidgetUrl, widgetToSubmit)
+        .then((res) => {
+          this.props.onWidgetEdited();
+        })
+        .catch((e) => {
+          console.error(`PUT ${putWidgetUrl} returned: ${e.toString()} ==> ${e}`);
+        });
+      // Using Axios to bypass CORS XSRF issues.
+
+      /*
       const postWidgetsUrl = `/api/widgets/${widgetToSubmit.id}`;
       const queryOptions = {
         type: 'PUT',
@@ -52,9 +62,19 @@ export default class EditWidgetModal extends Component {
           console.error(this.props.url, status, err.toString());
         }.bind(this),
       };
-
-      $.ajax(queryOptions);
+      $.ajax(queryOptions);*/
     } else if (widgetToSubmit) {
+      const postWidgetUrl = 'http://spa.tglrw.com:4000/widgets';
+      axios.post(postWidgetUrl, widgetToSubmit)
+        .then((res) => {
+          this.props.onWidgetEdited();
+        })
+        .catch((e) => {
+          console.error(`POST ${postWidgetUrl} returned: ${e.toString()} ==> ${e}`);
+        });
+
+      // Using Axios to bypass CORS XSRF issues.
+/*
       // POST doc
       const postWidgetsUrl = '/api/widgets/';
       const queryOptions = {
@@ -70,7 +90,7 @@ export default class EditWidgetModal extends Component {
         }.bind(this),
       };
 
-      $.ajax(queryOptions);
+      $.ajax(queryOptions);*/
     }
   }
 

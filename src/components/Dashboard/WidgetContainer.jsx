@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import * as Actions from '../actions';
 
 
-import DashboardBox from './DashboardBox.jsx';
-import DisplayTable from '../DisplayTable.jsx';
+import DashboardBox from './DashboardBox';
+import DisplayTable from '../DisplayTable';
 
 
 class WidgetContainer extends Component {
@@ -14,6 +15,18 @@ class WidgetContainer extends Component {
     this.state = { usersData: [], widgetsData: [] };
   }
   getUsersFromApi() {
+
+    axios.get('http://spa.tglrw.com:4000/users/')
+      .then((res) => {
+        const userData = res.data;
+        this.setState({ usersData: userData });
+      })
+      .catch((e) => {
+        console.error(`GET ${this.props.url} returned: ${e.toString()} ==> ${e}`);
+      });
+
+// .Ajax call for server call. Axios works best for this case.
+/*
     const getUsersUrl = '/api/users';
     const queryOptions = {
       type: 'GET',
@@ -24,27 +37,36 @@ class WidgetContainer extends Component {
       }.bind(this),
       error: function (xhr, status, err) {
         console.error(this.props.url, status, err.toString());
-      }.bind(this),
-    };
-
-    $.ajax(queryOptions);
+      }.bind(this)
+      ,};
+    $.ajax(queryOptions);*/
   }
 
   getWidgetsFromApi() {
-    const getWidgetsUrl = '/api/widgets';
+    const getWidgetsUrl = 'http://spa.tglrw.com:4000/widgets';
+
+
+    axios.get(getWidgetsUrl)
+      .then((res) => {
+        const widgetData = res.data;
+        this.setState({ widgetsData: widgetData });
+      })
+      .catch((e) => {
+        console.error(`GET ${getWidgetsUrl} returned: ${e.toString()} ==> ${e}`);
+      });
+
+/*
     const queryOptions = {
       type: 'GET',
       url: getWidgetsUrl,
       success: function (widgetData) {
-        console.debug('widgetData', widgetData);
         this.setState({ widgetsData: widgetData });
       }.bind(this),
       error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
       }.bind(this),
     };
 
-    $.ajax(queryOptions);
+    $.ajax(queryOptions);*/
   }
 
 
