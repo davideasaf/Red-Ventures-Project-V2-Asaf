@@ -1,77 +1,35 @@
 import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+
 import axios from 'axios';
 
-import Sidebar from '../Sidebar.jsx';
-import Headerbar from '../Headerbar.jsx';
-import DisplayTable from '../DisplayTable.jsx';
+import Sidebar from '../Sidebar';
+import Headerbar from '../Headerbar';
+import DisplayTable from '../DisplayTable';
+
+import { fetchUsers } from '../../actions/dashboardActions';
+import { fetchSpecificUser } from '../../actions/userActions';
 
 
+@connect((store) => {
+  return {
+    usersData: store.dashboard.usersData,
+  };
+})
 export default class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = { usersData: [], currentUserView: {} };
   }
-  loadUsersFromApi() {
-    axios.get('http://spa.tglrw.com:4000/users/')
-      .then((res) => {
-        const userData = res.data;
-        this.setState({ usersData: userData });
-      })
-      .catch((e) => {
-        console.error(`GET ${this.props.url} returned: ${e.toString()} ==> ${e}`);
-      });
 
-// .Ajax call for server call. Axios works best for this case.
-    /*
-     const getUsersUrl = '/api/users';
-     const queryOptions = {
-     type: 'GET',
-     url: getUsersUrl,
-     success: function (userData) {
-     console.debug('userData', userData);
-     this.setState({ usersData: userData });
-     }.bind(this),
-     error: function (xhr, status, err) {
-     console.error(this.props.url, status, err.toString());
-     }.bind(this)
-     ,};
-     $.ajax(queryOptions);*/
+  componentWillMount() {
+    this.props.dispatch(fetchUsers());
   }
 
   handleUserClickTable(userData) {
     // userData has all data to display but I will display hitting the API endpoint:
     // If this were specifically set to hit the API, I would only pass the ID up from the table child component
-    const userId = userData.id;
-    const getUserUrl = `http://spa.tglrw.com:4000/users/${userId}`;
-
-    axios.get(getUserUrl)
-      .then((res) => {
-        const userData = res.data;
-        this.setState({ currentUserView: userData });
-        $('#myModal').modal('show');
-      })
-      .catch((e) => {
-        console.error(`GET ${getUserUrl} returned: ${e.toString()} ==> ${e}`);
-      });
-/*
-    const queryOptions = {
-      type: 'GET',
-      url: getUserUrl,
-      success: function (userData) {
-        this.setState({ currentUserView: userData });
-        $('#myModal').modal('show');
-      }.bind(this),
-      error: function (xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this),
-    };
-
-    $.ajax(queryOptions);*/
-  }
-
-  componentDidMount() {
-    this.loadUsersFromApi();
-    // setInterval(this.loadCommentsFromServer, 2000);
+    this.props.dispatch(fetchSpecificUser(userData.id));
+    $('#myModal').modal('show');
   }
 
 
@@ -80,13 +38,13 @@ export default class Users extends Component {
     const tableHeaders = ['ID', 'Name', 'Avatar'];
     return (
       <div className="users">
-        <UserModal displayData={this.state.currentUserView} />
+        <UserModal />
         <Headerbar page="Users" />
         <Sidebar page="Users" />
         <DisplayTable
           title="Users"
           tableHeaders={tableHeaders}
-          displayData={this.state.usersData}
+          displayData={this.props.usersData}
           avatar="true"
           onRowDataClick={this.handleUserClickTable.bind(this)}
         />
@@ -95,14 +53,14 @@ export default class Users extends Component {
   }
 }
 
+@connect((store) => {
+  return {
+    displayData : store.user.currentUserView
+  };
+})
 class UserModal extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = {usersData: []};
-  // }
 
   render() {
-    // console.log('userData in state:', this.state.usersData);
     return (
       <div id="myModal" className="modal fade" role="dialog">
         <div className="modal-dialog">
@@ -131,6 +89,5 @@ class UserModal extends Component {
 }
 
 UserModal.propTypes = {
-  // title : React.PropTypes.string.isRequired,
   displayData: React.PropTypes.object.isRequired,
 };

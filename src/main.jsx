@@ -4,13 +4,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import configureStore from './store/configureStore';
+// import configureStore from './store/configureStore';
+import store from './store/configureStore';
 import App from './components/App';
 import Dashboard from './components/Dashboard/Dashboard';
 import Users from './components/Users/Users';
 import Widgets from './components/Widgets/Widgets';
 
-const store = configureStore();
+// const store = configureStore();
 
 
 ReactDOM.render((
